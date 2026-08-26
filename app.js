@@ -14,6 +14,9 @@ const PENDING_CHECKOUT_KEY = "member-download-checkout-v1";
 const statusDot = document.querySelector("#status-dot");
 const browserStatus = document.querySelector("#browser-status");
 const purchaseButton = document.querySelector("#purchase-button");
+const cryptoButton = document.querySelector("#crypto-button");
+const cryptoPanel = document.querySelector("#crypto-payment-panel");
+const cryptoClose = document.querySelector("#crypto-close");
 const configurationNote = document.querySelector("#configuration-note");
 const browserIcon = document.querySelector("#browser-icon");
 const accessTitle = document.querySelector("#access-title");
@@ -107,7 +110,13 @@ function render() {
       ? "Please wait"
       : hasAccess
         ? "Download now"
-        : `Unlock for ${config.priceLabel}`;
+        : `Pay with PayPal • ${config.priceLabel}`;
+
+  cryptoButton.hidden = hasAccess;
+  if (hasAccess) {
+    cryptoPanel.hidden = true;
+    cryptoButton.setAttribute("aria-expanded", "false");
+  }
 }
 
 async function checkStoredAccess(accessToken) {
@@ -224,5 +233,31 @@ purchaseButton.addEventListener("click", () => {
   if (hasAccess) void startDownload();
   else void startCheckout();
 });
+
+cryptoButton.addEventListener("click", () => {
+  const shouldOpen = cryptoPanel.hidden;
+  cryptoPanel.hidden = !shouldOpen;
+  cryptoButton.setAttribute("aria-expanded", String(shouldOpen));
+});
+
+cryptoClose.addEventListener("click", () => {
+  cryptoPanel.hidden = true;
+  cryptoButton.setAttribute("aria-expanded", "false");
+  cryptoButton.focus();
+});
+
+for (const button of document.querySelectorAll(".copy-address")) {
+  button.addEventListener("click", async () => {
+    const address = button.dataset.copy || "";
+    if (!address) return;
+
+    try {
+      await navigator.clipboard.writeText(address);
+      showToast("Crypto address copied.", "success");
+    } catch {
+      showToast("Could not copy automatically. Select the address and copy it manually.", "error");
+    }
+  });
+}
 
 void initializeAccess();

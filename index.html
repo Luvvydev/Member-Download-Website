@@ -46,7 +46,7 @@
           <strong data-price-label>$20</strong>
         </div>
         <h2 id="purchase-title">Access on this browser</h2>
-        <p class="purchase-copy">After PayPal confirms the payment, this browser receives a private access key and can request the member file at any time.</p>
+        <p class="purchase-copy">PayPal unlocks access automatically. Crypto payments are verified manually through Discord.</p>
         <div class="configuration-note" id="configuration-note" role="status">Payment setup is unavailable.</div>
         <div class="access-status">
           <div class="browser-icon" id="browser-icon" aria-hidden="true">▣</div>
@@ -57,7 +57,62 @@
           <span class="status-dot" id="status-dot" aria-hidden="true"></span>
         </div>
         <button class="primary-action" id="purchase-button" type="button" disabled>Download setup required</button>
-        <p class="payment-note">PayPal confirms the full $20 payment before access is issued.</p>
+        <button class="secondary-action" id="crypto-button" type="button" aria-expanded="false" aria-controls="crypto-payment-panel">Pay with Crypto</button>
+        <section class="crypto-panel" id="crypto-payment-panel" aria-labelledby="crypto-title" hidden>
+          <div class="crypto-panel-heading">
+            <div>
+              <span class="purchase-label">Manual payment</span>
+              <h3 id="crypto-title">Crypto addresses</h3>
+            </div>
+            <button class="crypto-close" id="crypto-close" type="button" aria-label="Close crypto payment options">×</button>
+          </div>
+          <p class="crypto-instructions">Send $20 using one of the options below. Use the exact network shown. After payment, send the transaction ID or hash to Discord <strong>LuvvyWuvvy</strong> for manual verification and file delivery.</p>
+
+          <div class="crypto-list">
+            <div class="crypto-option">
+              <div class="crypto-option-heading"><strong>USDC</strong><span>Ethereum (ERC-20)</span></div>
+              <div class="crypto-address-row">
+                <code>0x9eDb84A41E914Dd241E8E8FC49B6b51035562095</code>
+                <button class="copy-address" type="button" data-copy="0x9eDb84A41E914Dd241E8E8FC49B6b51035562095">Copy</button>
+              </div>
+            </div>
+
+            <div class="crypto-option">
+              <div class="crypto-option-heading"><strong>USDC</strong><span>Solana</span></div>
+              <div class="crypto-address-row">
+                <code>8YZrzde4aq3QAxaDnDKhFXrsYBu5t1QHj9c9r3Q7r9nz</code>
+                <button class="copy-address" type="button" data-copy="8YZrzde4aq3QAxaDnDKhFXrsYBu5t1QHj9c9r3Q7r9nz">Copy</button>
+              </div>
+            </div>
+
+            <div class="crypto-option">
+              <div class="crypto-option-heading"><strong>USDT</strong><span>Ethereum (ERC-20)</span></div>
+              <div class="crypto-address-row">
+                <code>0x21FF18B1ab47F6981156476D01D83c49830a31FC</code>
+                <button class="copy-address" type="button" data-copy="0x21FF18B1ab47F6981156476D01D83c49830a31FC">Copy</button>
+              </div>
+            </div>
+
+            <div class="crypto-option">
+              <div class="crypto-option-heading"><strong>LTC</strong><span>Litecoin network</span></div>
+              <div class="crypto-address-row">
+                <code>MN24j2r7t6saiJt5iT5Eq3v35Ub1c8NWD3</code>
+                <button class="copy-address" type="button" data-copy="MN24j2r7t6saiJt5iT5Eq3v35Ub1c8NWD3">Copy</button>
+              </div>
+            </div>
+
+            <div class="crypto-option">
+              <div class="crypto-option-heading"><strong>BTC</strong><span>Bitcoin network</span></div>
+              <div class="crypto-address-row">
+                <code>3Gtr99meZfaoxws9jWeo5EchsDajPmAmXf</code>
+                <button class="copy-address" type="button" data-copy="3Gtr99meZfaoxws9jWeo5EchsDajPmAmXf">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="crypto-warning">Only send each asset on the network listed above. Crypto payments do not unlock browser access automatically.</p>
+        </section>
+        <p class="payment-note">PayPal is instant. Crypto requires manual verification through Discord.</p>
         <span class="sr-only" id="browser-status" aria-live="polite">Setup required</span>
       </aside>
     </main>
