@@ -1,2 +1,6 @@
 private-download/
 /Luvvy_LastHit_Obfuscated.js
+firebase/node_modules/
+firebase/.secret.local
+firebase/.env.local
+.firebase/
