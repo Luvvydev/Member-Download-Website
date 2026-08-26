@@ -1,5 +1,20 @@
 # Firebase and PayPal setup
 
+This repository uses the separate Firebase Functions codebase `member-download`. Deploying this codebase does not replace or delete the ChessDrills functions codebase.
+
+From the repository root, install the function dependencies with:
+
+```powershell
+npm install --prefix firebase
+```
+
+Use the Firebase CLI through `npx` so a global installation is not required:
+
+```powershell
+npx firebase-tools@latest login
+npx firebase-tools@latest use chess-ee6b0
+```
+
 Use the existing Firebase project `chess-ee6b0`. Do not enable Firebase Authentication and do not deploy replacement Firestore or Storage rules.
 
 ## 1. Finish the public website first
@@ -22,40 +37,31 @@ In Firebase Console:
 4. Create a score based Web key in Google Cloud.
 5. Add `localhost` for local development and `luvvydev.github.io` for GitHub Pages.
 6. Paste the public key ID into Firebase and save.
-7. Put the same key ID in `.env.local` as `NEXT_PUBLIC_FIREBASE_APP_CHECK_SITE_KEY`.
+7. Put the same key ID in `config.js` as `appCheckSiteKey`.
 
 Do not enable App Check enforcement in the console yet. The function source enforces valid App Check tokens on its four browser callable endpoints. The PayPal webhook uses PayPal signature verification instead.
 
-## 3. Add the functions without replacing ChessDrills
+## 3. Isolated functions codebase
 
-Copy `paypal-download.cjs` into the existing ChessDrills `functions` source folder.
-
-If that folder already has an `index.js`, add this one line without replacing its other exports:
-
-```js
-Object.assign(exports, require("./paypal-download.cjs"));
-```
-
-The functions project needs current `firebase-admin` and `firebase-functions` packages and Node.js 20 or newer.
+The repository is already configured with the separate codebase `member-download` and the Node.js 22 runtime. The source remains in `firebase/paypal-download.cjs` and does not need to be copied into ChessDrills.
 
 ## 4. Store the Live PayPal credentials
 
-From the Firebase project folder, run:
+From the repository root, run:
 
-```bash
-firebase functions:secrets:set DOWNLOAD_PAYPAL_CLIENT_ID
-firebase functions:secrets:set DOWNLOAD_PAYPAL_CLIENT_SECRET
+```powershell
+npx firebase-tools@latest functions:secrets:set DOWNLOAD_PAYPAL_CLIENT_ID --project chess-ee6b0
+npx firebase-tools@latest functions:secrets:set DOWNLOAD_PAYPAL_CLIENT_SECRET --project chess-ee6b0
 ```
 
 Paste the Live Client ID into the first prompt and the hidden Live Secret key into the second. Never put the PayPal Secret in this website, `.env.local`, GitHub, or a screenshot.
 
 ## 5. Function parameter values
 
-Use these values when Firebase asks for function parameters during deployment:
+These nonsecret values are already stored in `firebase/.env.chess-ee6b0`:
 
 ```text
 DOWNLOAD_PAYPAL_ENVIRONMENT=live
-DOWNLOAD_PAYPAL_WEBHOOK_ID=
 DOWNLOAD_SITE_URL=https://luvvydev.github.io/Member-Download-Website
 DOWNLOAD_BUCKET=chess-ee6b0.firebasestorage.app
 DOWNLOAD_OBJECT_PATH=member-downloads/current-download.js
@@ -63,7 +69,7 @@ DOWNLOAD_FILENAME=Luvvy_LastHit_Obfuscated.js
 DOWNLOAD_PRODUCT_NAME=Member Download
 ```
 
-Leave `DOWNLOAD_PAYPAL_WEBHOOK_ID` empty for the first deployment.
+The PayPal webhook ID is added after the first deployment.
 
 ## 6. Upload the member file
 
@@ -76,7 +82,7 @@ member-downloads/current-download.js
 Run this from the website folder after installing Google Cloud CLI and signing in with `gcloud auth login`:
 
 ```powershell
-.\replace-download.ps1 -File ".\private-download\Luvvy_LastHit_Obfuscated.js"
+gcloud storage cp ".\Luvvy_LastHit_Obfuscated.js" "gs://chess-ee6b0.firebasestorage.app/member-downloads/current-download.js"
 ```
 
 For later releases, pass the updated file path to the same command. The object path stays unchanged, so replacing the file does not require a website or function deployment.
@@ -85,10 +91,10 @@ The browser never reads Storage directly. `downloadGetFile` verifies the browser
 
 ## 7. Deploy only the new functions
 
-Do not deploy the whole ChessDrills functions folder. Deploy only these names:
+Deploy only the separate `member-download` codebase:
 
-```bash
-firebase deploy --only functions:downloadCreatePaypalOrder,functions:downloadCapturePaypalOrder,functions:downloadCheckAccess,functions:downloadGetFile,functions:downloadPaypalWebhook
+```powershell
+npx firebase-tools@latest deploy --only functions:member-download --project chess-ee6b0
 ```
 
 The webhook listener URL will be:
@@ -107,21 +113,27 @@ PAYMENT.CAPTURE.REFUNDED
 PAYMENT.CAPTURE.REVERSED
 ```
 
-Copy the Webhook ID returned by PayPal into the function parameter file as `DOWNLOAD_PAYPAL_WEBHOOK_ID`, then deploy only the webhook function again:
+Copy the Webhook ID returned by PayPal into `firebase/.env.chess-ee6b0` as:
 
-```bash
-firebase deploy --only functions:downloadPaypalWebhook
+```text
+DOWNLOAD_PAYPAL_WEBHOOK_ID=your-webhook-id
+```
+
+Then deploy the isolated codebase again:
+
+```powershell
+npx firebase-tools@latest deploy --only functions:member-download --project chess-ee6b0
 ```
 
 ## 9. Enable the website
 
-After the file exists and all functions are deployed, change this in the website environment file:
+After the file exists and all functions are deployed, change this in `config.js`:
 
-```text
-NEXT_PUBLIC_DOWNLOAD_READY=true
+```js
+downloadReady: true,
 ```
 
-Rebuild and publish the website. Only then should the $20 PayPal button become active.
+Commit and push `config.js`. GitHub Pages publishes the change automatically. Only then should the $20 PayPal button become active.
 
 ## 10. Enforcement and real payment check
 
