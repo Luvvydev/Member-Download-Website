@@ -5,7 +5,7 @@ This repository uses the separate Firebase Functions codebase `member-download`.
 From the repository root, install the function dependencies with:
 
 ```powershell
-npm install --prefix firebase
+npm install --prefix member-download-functions
 ```
 
 Use the Firebase CLI through `npx` so a global installation is not required:
@@ -43,7 +43,7 @@ Do not enable App Check enforcement in the console yet. The function source enfo
 
 ## 3. Isolated functions codebase
 
-The repository is already configured with the separate codebase `member-download` and the Node.js 22 runtime. The source remains in `firebase/paypal-download.cjs` and does not need to be copied into ChessDrills.
+The repository is already configured with the separate codebase `member-download` and the Node.js 22 runtime. The source remains in `member-download-functions/paypal-download.cjs` and does not need to be copied into ChessDrills.
 
 ## 4. Store the Live PayPal credentials
 
@@ -58,7 +58,7 @@ Paste the Live Client ID into the first prompt and the hidden Live Secret key in
 
 ## 5. Function parameter values
 
-These nonsecret values are already stored in `firebase/.env.chess-ee6b0`:
+These nonsecret values are already stored in `member-download-functions/.env.chess-ee6b0`:
 
 ```text
 DOWNLOAD_PAYPAL_ENVIRONMENT=live
@@ -113,7 +113,7 @@ PAYMENT.CAPTURE.REFUNDED
 PAYMENT.CAPTURE.REVERSED
 ```
 
-Copy the Webhook ID returned by PayPal into `firebase/.env.chess-ee6b0` as:
+Copy the Webhook ID returned by PayPal into `member-download-functions/.env.chess-ee6b0` as:
 
 ```text
 DOWNLOAD_PAYPAL_WEBHOOK_ID=your-webhook-id
