@@ -1,7 +1,7 @@
 {
   "name": "member-download-functions",
   "private": true,
-  "main": "paypal-download.cjs",
+  "main": "index.js",
   "engines": {
     "node": "22"
   },
