@@ -1,7 +1,7 @@
 window.MEMBER_DOWNLOAD_CONFIG = {
   productName: "Member Download",
   priceLabel: "$20",
-  downloadReady: false,
+  downloadReady: true,
   firebase: {
     apiKey: "AIzaSyCaPio0QutVP3MX13fUge4Lo9_SVkIcSMQ",
     authDomain: "chess-ee6b0.firebaseapp.com",
