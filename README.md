@@ -73,3 +73,17 @@ https://luvvydev.github.io/Member-Download-Website/
 ```
 
 The paid file is excluded through `.gitignore`. Never remove that exclusion or place the paid file in the public website files.
+
+## Work with Git on Windows
+
+A downloaded ZIP does not contain the repository's `.git` metadata, so `git status` will fail inside an extracted ZIP.
+
+Keep the extracted ZIP as your local package. For Git work, open PowerShell in `Downloads` and run:
+
+```powershell
+git clone https://github.com/Luvvydev/Member-Download-Website.git
+cd Member-Download-Website
+git status
+```
+
+Use that cloned folder for future website edits and pushes. Keep updated paid files outside the cloned repository, or inside its ignored `private-download` folder.
