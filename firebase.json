@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "firebase",
+      "source": "member-download-functions",
       "codebase": "member-download",
       "runtime": "nodejs22",
       "ignore": [
