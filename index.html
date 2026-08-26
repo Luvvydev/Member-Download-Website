@@ -3,97 +3,63 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A secure one time PayPal purchase and browser remembered member download."
-    />
-    <title>Member Download</title>
+    <meta name="description" content="Luvvy Last Hit premium last hit and deny assistant." />
+    <title>Luvvy Last Hit</title>
     <link rel="icon" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="portal-shell">
-      <header class="portal-header">
-        <a class="brand-lockup" href="#top" aria-label="Member Download home">
-          <span class="brand-mark" aria-hidden="true">⌁</span>
-          <span data-product-name>Member Download</span>
-        </a>
-        <div class="header-status" aria-live="polite">
-          <span class="status-dot" id="status-dot"></span>
-          <span id="browser-status">Setup required</span>
-        </div>
-      </header>
+    <main class="page-shell">
+      <section class="product-copy" aria-labelledby="product-title">
+        <div class="title-mark" aria-hidden="true">LH</div>
+        <p class="eyebrow">Premium Dota 2 script</p>
+        <h1 id="product-title">Luvvy Last Hit</h1>
+        <p class="intro">Premium last hit and deny assistant with animation cancelling built for manual farming.</p>
 
-      <section class="hero-grid" id="top">
-        <div class="hero-copy">
-          <p class="eyebrow">Private member release</p>
-          <h1>Pay once.<br />Download anytime.</h1>
-          <p class="hero-lead">
-            Make one secure PayPal payment and this browser remembers your
-            member download access. No account or password is required.
-          </p>
-          <div class="trust-row" aria-label="Purchase details">
-            <span><b aria-hidden="true">✓</b> One time payment</span>
-            <span><b aria-hidden="true">✓</b> No account required</span>
-            <span><b aria-hidden="true">✓</b> Server verified access</span>
-          </div>
-        </div>
+        <section class="content-section" aria-labelledby="features-title">
+          <h2 id="features-title">Features</h2>
+          <ul class="feature-list">
+            <li><span aria-hidden="true">⌁</span>Automatically holds attacks until the predicted last hit or deny window</li>
+            <li><span aria-hidden="true">◆</span>Supports lane creeps, allied denies, neutrals, and under tower farming</li>
+            <li><span aria-hidden="true">↗</span>Learns observed creep and tower damage to improve prediction</li>
+            <li><span aria-hidden="true">◌</span>Fake attack animations that can convert into a last hit</li>
+            <li><span aria-hidden="true">◎</span>Right click targeting or closest to mouse hotkey</li>
+            <li><span aria-hidden="true">▰</span>Subtle health bar state indicator</li>
+            <li><span aria-hidden="true">#</span>Contact me on Discord for access</li>
+          </ul>
+        </section>
 
-        <aside class="release-card" aria-labelledby="release-heading">
-          <div class="release-topline">
-            <span class="release-label">Member download</span>
-            <span class="release-price" data-price-label>$20</span>
-          </div>
-          <div class="file-glyph" aria-hidden="true">↓</div>
-          <h2 id="release-heading">Access on this browser</h2>
-          <p>
-            After PayPal confirms the payment, this browser receives a private
-            access key and can request the member file at any time.
-          </p>
-          <button class="primary-action" id="purchase-button" type="button" disabled>
-            Download setup required
-          </button>
-          <p class="payment-note">
-            PayPal confirms the full $20 payment before access is issued.
-          </p>
-        </aside>
+        <section class="content-section" aria-labelledby="guide-title">
+          <h2 id="guide-title">Guide</h2>
+          <ol class="guide-list">
+            <li><span>1</span>Enable the script.</li>
+            <li><span>2</span>Choose a creep and issue an attack command with right click. You can also use the target hotkey to grab the creep closest to your mouse.</li>
+            <li><span>3</span>Once the creep reaches a low enough health range, it will secure the last hit automatically.</li>
+            <li><span>4</span>Under tower, it may release attacks early to prepare the final hit. This is not guaranteed for every creep.</li>
+          </ol>
+        </section>
       </section>
 
-      <section class="access-section" id="access">
-        <div class="section-heading">
-          <p class="eyebrow">Browser access</p>
-          <h2>No signup, login, or password.</h2>
-          <p>
-            The purchase creates a private access key stored only in the browser
-            used for checkout.
-          </p>
+      <aside class="purchase-card" aria-labelledby="purchase-title">
+        <div class="purchase-heading">
+          <div><span class="purchase-icon" aria-hidden="true">↓</span><span class="purchase-label">Member download</span></div>
+          <strong data-price-label>$20</strong>
         </div>
-
-        <div class="browser-access-panel">
-          <div class="configuration-note" id="configuration-note" role="status">
-            Firebase App Check must be configured before payments can open.
+        <h2 id="purchase-title">Access on this browser</h2>
+        <p class="purchase-copy">After PayPal confirms the payment, this browser receives a private access key and can request the member file at any time.</p>
+        <div class="configuration-note" id="configuration-note" role="status">Payment setup is unavailable.</div>
+        <div class="access-status">
+          <div class="browser-icon" id="browser-icon" aria-hidden="true">▣</div>
+          <div>
+            <strong id="access-title">Access is not unlocked yet</strong>
+            <span id="access-description">Complete the $20 PayPal payment once to remember access here.</span>
           </div>
-          <div class="browser-access-card">
-            <div class="browser-icon" id="browser-icon" aria-hidden="true">▣</div>
-            <div class="browser-access-copy">
-              <span class="access-kicker">This browser</span>
-              <strong id="access-title">Access is not unlocked yet</strong>
-              <span id="access-description">
-                Complete the $20 PayPal payment once to remember access here.
-              </span>
-            </div>
-          </div>
-          <p class="browser-warning">
-            Clearing browser data, using private browsing, or switching devices
-            removes automatic access. With no account, there is no password based recovery.
-          </p>
+          <span class="status-dot" id="status-dot" aria-hidden="true"></span>
         </div>
-      </section>
-
-      <footer class="portal-footer">
-        <span data-product-name>Member Download</span>
-        <span>Secure purchase through PayPal</span>
-      </footer>
+        <button class="primary-action" id="purchase-button" type="button" disabled>Download setup required</button>
+        <p class="payment-note">PayPal confirms the full $20 payment before access is issued.</p>
+        <span class="sr-only" id="browser-status" aria-live="polite">Setup required</span>
+      </aside>
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>

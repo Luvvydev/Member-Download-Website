@@ -1,5 +1,5 @@
 window.MEMBER_DOWNLOAD_CONFIG = {
-  productName: "Member Download",
+  productName: "Luvvy Last Hit",
   priceLabel: "$20",
   downloadReady: true,
   firebase: {
