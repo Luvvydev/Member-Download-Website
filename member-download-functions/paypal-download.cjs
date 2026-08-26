@@ -32,7 +32,7 @@ const DOWNLOAD_PRODUCT_NAME = defineString("DOWNLOAD_PRODUCT_NAME", {
 });
 
 const REGION = "us-central1";
-const PRICE = "20.00";
+const PRICE = "10.00";
 const CURRENCY = "USD";
 const CHECKOUT_LIFETIME_MS = 24 * 60 * 60 * 1000;
 const REVOCATION_EVENTS = new Set([

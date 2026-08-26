@@ -1,6 +1,6 @@
 window.MEMBER_DOWNLOAD_CONFIG = {
   productName: "Luvvy Last Hit",
-  priceLabel: "$20",
+  priceLabel: "$10",
   downloadReady: true,
   firebase: {
     apiKey: "AIzaSyCaPio0QutVP3MX13fUge4Lo9_SVkIcSMQ",
