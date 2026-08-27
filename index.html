@@ -12,36 +12,55 @@
     <main class="page-shell">
       <section class="product-copy" aria-labelledby="product-title">
         <div class="title-mark" aria-hidden="true">LH</div>
-        <p class="eyebrow">Premium Dota 2 script</p>
+        <p class="eyebrow">Dota 2</p>
         <h1 id="product-title">Luvvy Last Hit</h1>
         <p class="intro">Premium last hit and deny assistant with animation cancelling built for manual farming.</p>
 
-        <section class="content-section" aria-labelledby="features-title">
-          <h2 id="features-title">Features</h2>
-          <ul class="feature-list">
-            <li><span aria-hidden="true">⌁</span>Automatically holds attacks until the predicted last hit or deny window</li>
-            <li><span aria-hidden="true">◆</span>Supports lane creeps, allied denies, neutrals, and under tower farming</li>
-            <li><span aria-hidden="true">↗</span>Predicts incoming creep, tower, and hero attacks while learning observed damage to improve timing</li>
-            <li><span aria-hidden="true">◌</span>Fake attack animations that can convert into a real last hit when the timing becomes ready</li>
-            <li><span aria-hidden="true">◎</span>Right click targeting, closest-to-mouse selection, or a lowest-HP creep selector while held</li>
-            <li><span aria-hidden="true">➜</span>Holding the selector hotkey follows your mouse and automatically takes over movement when a last hit or deny needs range</li>
-            <li><span aria-hidden="true">▰</span>Health bar indicator shows the predicted HP threshold where the script plans to attack</li>
-            <li><span aria-hidden="true">⚔</span>Harasses nearby enemy heroes during safe gaps between last hit windows</li>
-            <li><span aria-hidden="true">×</span>Settable clear-actions hotkey instantly drops the current creep and script-controlled actions</li>
-            <li><span aria-hidden="true">⏱</span>Accounts for attack speed, attack animation, turn time, attack cooldown, and projectile travel</li>
-          </ul>
-        </section>
+        <div class="content-accordion-stack">
+          <details class="content-section accordion-section">
+            <summary class="accordion-summary">
+              <h2>Features</h2>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="accordion-body">
+              <ul class="feature-list">
+                <li>Right Click mode for legit last hit or deny window</li>
+                <li>Supports lane creeps, allied denies, neutrals, and under tower farming</li>
+                <li>Predicts incoming creep, tower, and hero damage while learning observed damage</li>
+                <li>Fake attack animations convert into real last hits</li>
+                <li>Harasses nearby enemy heroes during safe gaps between farm windows</li>
+                <li>Tooltips on every setting for quick fine tuning</li>
+              </ul>
+            </div>
+          </details>
 
-        <section class="content-section" aria-labelledby="guide-title">
-          <h2 id="guide-title">Guide</h2>
-          <ol class="guide-list">
-            <li><span>1</span>Enable the script and set your creep selector and clear-actions hotkeys.</li>
-            <li><span>2</span>Select a creep with right click, use Closest to mouse mode, or hold the selector hotkey in Lowest HP mode to automatically prefer the lowest-health valid last hit or deny target.</li>
-            <li><span>3</span>While the selector hotkey is held, your hero follows your mouse. If the selected creep is approaching a real farm window and you need to get into attack range, the script temporarily takes over movement toward the creep.</li>
-            <li><span>4</span>When the predicted last hit or deny window is ready, the script commits the attack. Under tower it also accounts for incoming tower and creep damage when deciding when to start the hit.</li>
-            <li><span>5</span>Press the clear-actions hotkey whenever you want to drop the current target and return full control until you select another creep.</li>
-          </ol>
-        </section>
+          <details class="content-section accordion-section">
+            <summary class="accordion-summary">
+              <h2>Guide</h2>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="accordion-body">
+              <ol class="guide-list">
+                <li><span>1</span>Enable the script and set your creep selector and clear-actions hotkeys.</li>
+                <li><span>2</span>Select a creep with right click, or hold the selector hotkey in Lowest HP mode</li>
+                <li><span>3</span>Press the clear-actions hotkey whenever you want to drop the current target and return full control until you select another creep.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="content-section accordion-section video-section">
+            <summary class="accordion-summary">
+              <h2>Video demo</h2>
+              <span class="accordion-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="accordion-body video-body">
+              <video class="demo-video" controls preload="none" playsinline>
+                <source src="./LashitLuvvy.mp4" type="video/mp4" />
+                Your browser does not support HTML video.
+              </video>
+            </div>
+          </details>
+        </div>
       </section>
 
       <div class="purchase-column">
@@ -119,31 +138,34 @@
         <span class="sr-only" id="browser-status" aria-live="polite">Setup required</span>
       </aside>
 
-      <section class="settings-card" aria-labelledby="settings-title">
-        <div class="settings-heading">
+      <details class="settings-card" aria-labelledby="settings-title">
+        <summary class="settings-summary">
           <span class="settings-icon" aria-hidden="true">⚙</span>
           <div>
             <span class="purchase-label">Quick tuning</span>
             <h2 id="settings-title">Last hit timing</h2>
           </div>
-        </div>
-        <p class="settings-intro">If hits are landing a little early or late, these two settings are the best place to start.</p>
+          <span class="accordion-chevron" aria-hidden="true"></span>
+        </summary>
+        <div class="settings-content">
+          <p class="settings-intro">If hits are landing a little early or late, these two settings are the best place to start.</p>
 
-        <div class="setting-tip">
-          <img src="./settings-damage-margin.png" alt="Last hit damage margin percent setting" />
-          <div class="setting-tip-copy">
-            <p><b>Too early:</b> move it left. If the creep survives with a small amount of HP, try 98 and adjust by 1 or 2 points at a time.</p>
-            <p><b>Too late:</b> move it right. 100 means the script uses 100% of its estimated attack damage.</p>
+          <div class="setting-tip">
+            <img src="./settings-damage-margin.png" alt="Last hit damage margin percent setting" />
+            <div class="setting-tip-copy">
+              <p><b>Too early:</b> move it left. If the creep survives with a small amount of HP, try 98 and adjust by 1 or 2 points at a time.</p>
+              <p><b>Too late:</b> move it right. 100 means the script uses 100% of its estimated attack damage.</p>
+            </div>
+          </div>
+
+          <div class="setting-tip">
+            <img src="./settings-local-damage.png" alt="Local attack damage setting set to Minimum" />
+            <div class="setting-tip-copy">
+              <p><b>Recommended:</b> Minimum. It uses the low end of your hero's damage range, which makes the last hit timing more conservative.</p>
+            </div>
           </div>
         </div>
-
-        <div class="setting-tip">
-          <img src="./settings-local-damage.png" alt="Local attack damage setting set to Minimum" />
-          <div class="setting-tip-copy">
-            <p><b>Recommended:</b> Minimum. It uses the low end of your hero's damage range, which makes the last hit timing more conservative.</p>
-          </div>
-        </div>
-      </section>
+      </details>
       </div>
     </main>
 
