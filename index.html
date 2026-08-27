@@ -21,23 +21,25 @@
           <ul class="feature-list">
             <li><span aria-hidden="true">⌁</span>Automatically holds attacks until the predicted last hit or deny window</li>
             <li><span aria-hidden="true">◆</span>Supports lane creeps, allied denies, neutrals, and under tower farming</li>
-            <li><span aria-hidden="true">↗</span>Learns observed creep and tower damage to improve prediction</li>
-            <li><span aria-hidden="true">◌</span>Fake attack animations that can convert into a last hit</li>
-            <li><span aria-hidden="true">◎</span>Right click targeting or closest to mouse hotkey</li>
-            <li><span aria-hidden="true">▰</span>Subtle health bar state indicator</li>
-            <li><span aria-hidden="true">⚔</span>Harasses nearby enemy heroes between last hit windows</li>
-            <li><span aria-hidden="true">⏱</span>Accounts for your attack speed, attack animation, turn time, and projectile travel</li>
-            
+            <li><span aria-hidden="true">↗</span>Predicts incoming creep, tower, and hero attacks while learning observed damage to improve timing</li>
+            <li><span aria-hidden="true">◌</span>Fake attack animations that can convert into a real last hit when the timing becomes ready</li>
+            <li><span aria-hidden="true">◎</span>Right click targeting, closest-to-mouse selection, or a lowest-HP creep selector while held</li>
+            <li><span aria-hidden="true">➜</span>Holding the selector hotkey follows your mouse and automatically takes over movement when a last hit or deny needs range</li>
+            <li><span aria-hidden="true">▰</span>Health bar indicator shows the predicted HP threshold where the script plans to attack</li>
+            <li><span aria-hidden="true">⚔</span>Harasses nearby enemy heroes during safe gaps between last hit windows</li>
+            <li><span aria-hidden="true">×</span>Settable clear-actions hotkey instantly drops the current creep and script-controlled actions</li>
+            <li><span aria-hidden="true">⏱</span>Accounts for attack speed, attack animation, turn time, attack cooldown, and projectile travel</li>
           </ul>
         </section>
 
         <section class="content-section" aria-labelledby="guide-title">
           <h2 id="guide-title">Guide</h2>
           <ol class="guide-list">
-            <li><span>1</span>Enable the script.</li>
-            <li><span>2</span>Choose a creep and issue an attack command with right click. You can also use the target hotkey to grab the creep closest to your mouse.</li>
-            <li><span>3</span>Once the creep reaches a low enough health range, it will secure the last hit automatically.</li>
-            <li><span>4</span>Under tower, it may release attacks early to prepare the final hit. This is not guaranteed for every creep.</li>
+            <li><span>1</span>Enable the script and set your creep selector and clear-actions hotkeys.</li>
+            <li><span>2</span>Select a creep with right click, use Closest to mouse mode, or hold the selector hotkey in Lowest HP mode to automatically prefer the lowest-health valid last hit or deny target.</li>
+            <li><span>3</span>While the selector hotkey is held, your hero follows your mouse. If the selected creep is approaching a real farm window and you need to get into attack range, the script temporarily takes over movement toward the creep.</li>
+            <li><span>4</span>When the predicted last hit or deny window is ready, the script commits the attack. Under tower it also accounts for incoming tower and creep damage when deciding when to start the hit.</li>
+            <li><span>5</span>Press the clear-actions hotkey whenever you want to drop the current target and return full control until you select another creep.</li>
           </ol>
         </section>
       </section>
