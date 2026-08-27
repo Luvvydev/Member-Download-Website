@@ -25,6 +25,8 @@
             <li><span aria-hidden="true">◌</span>Fake attack animations that can convert into a last hit</li>
             <li><span aria-hidden="true">◎</span>Right click targeting or closest to mouse hotkey</li>
             <li><span aria-hidden="true">▰</span>Subtle health bar state indicator</li>
+            <li><span aria-hidden="true">⚔</span>Harasses nearby enemy heroes between last hit windows</li>
+            <li><span aria-hidden="true">⏱</span>Accounts for your attack speed, attack animation, turn time, and projectile travel</li>
             
           </ul>
         </section>
@@ -40,13 +42,12 @@
         </section>
       </section>
 
+      <div class="purchase-column">
       <aside class="purchase-card" aria-labelledby="purchase-title">
         <div class="purchase-heading">
           <div><span class="purchase-icon" aria-hidden="true">↓</span><span class="purchase-label">Member download</span></div>
           <strong data-price-label>$10</strong>
         </div>
-        <h2 id="purchase-title">Access on this browser</h2>
-        <p class="purchase-copy">PayPal unlocks access automatically. Crypto payments are verified manually through Discord.</p>
         <div class="configuration-note" id="configuration-note" role="status">Payment setup is unavailable.</div>
         <div class="access-status">
           <div class="browser-icon" id="browser-icon" aria-hidden="true">▣</div>
@@ -115,6 +116,33 @@
         <p class="payment-note">PayPal is instant. Crypto requires manual verification through Discord.</p>
         <span class="sr-only" id="browser-status" aria-live="polite">Setup required</span>
       </aside>
+
+      <section class="settings-card" aria-labelledby="settings-title">
+        <div class="settings-heading">
+          <span class="settings-icon" aria-hidden="true">⚙</span>
+          <div>
+            <span class="purchase-label">Quick tuning</span>
+            <h2 id="settings-title">Last hit timing</h2>
+          </div>
+        </div>
+        <p class="settings-intro">If hits are landing a little early or late, these two settings are the best place to start.</p>
+
+        <div class="setting-tip">
+          <img src="./settings-damage-margin.png" alt="Last hit damage margin percent setting" />
+          <div class="setting-tip-copy">
+            <p><b>Too early:</b> move it left. If the creep survives with a small amount of HP, try 98 and adjust by 1 or 2 points at a time.</p>
+            <p><b>Too late:</b> move it right. 100 means the script uses 100% of its estimated attack damage.</p>
+          </div>
+        </div>
+
+        <div class="setting-tip">
+          <img src="./settings-local-damage.png" alt="Local attack damage setting set to Minimum" />
+          <div class="setting-tip-copy">
+            <p><b>Recommended:</b> Minimum. It uses the low end of your hero's damage range, which makes the last hit timing more conservative.</p>
+          </div>
+        </div>
+      </section>
+      </div>
     </main>
 
     <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
